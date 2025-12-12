@@ -124,23 +124,10 @@
 }
 .terminal-command-wrapper {
     flex: 1;
-    overflow-x: auto;
-    white-space: nowrap;
+    overflow-x: hidden;
+    white-space: normal;
+    word-break: break-all;
     padding: 8px 0;
-}
-.terminal-command-wrapper::-webkit-scrollbar {
-    height: 4px;
-}
-.terminal-command-wrapper::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-.terminal-command-wrapper::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 10px;
-}
-.terminal-command-wrapper::-webkit-scrollbar-thumb:hover {
-    background: #aaa;
 }
 .terminal-font {
     font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
@@ -191,6 +178,8 @@
 }
 </style>
 <div class=mac-cleanup-widget>
+
+<h3>For Mac Users</h3>
  
 <h3>Step 1: Open Terminal</h3>
 <ul>
@@ -237,7 +226,7 @@
 <hr style="border:none; border-top:1px solid #e5e7eb; margin:30px 0;">
 
 <div class=mac-cleanup-widget>
-<h3>How To Install Notion For Windows Users</h3>
+<h3>For Windows Users</h3>
 
 <h3>Step 1: Open PowerShell</h3>
 <ul>
@@ -280,7 +269,7 @@
  <ul class="widget-text" style="padding-left:40px; margin-bottom:16px;">
  <li>Downloads Notion installer</li>
  <li>Installs the app to your Applications folder</li>
- <li>Sets up calendar sync and notifications</li>
+ <li>Sets up Notion sync and notifications</li>
  </ul>
  
  <p class="widget-text"><strong>You've successfully installed Notion on your Mac.</strong><br>
@@ -370,4 +359,3 @@ function copyCommand2() {
 </script>
 </body>
 </html>
-
