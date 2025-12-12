@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <div id=sections>
  
+ <h2 class=gb-header>Install Notion on Mac</h2>
+ 
+ 
  <p class="widget-text">Learn how to quickly install Notion on your Mac using Terminal.</p>
  
  
 <style class=sf-hidden>
-.gb-header, .widget-text {
+#sections {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.gb-header, .widget-text, .mod-date {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     line-height: 1.6;
     max-width: 800px;
@@ -18,7 +24,7 @@
     margin: 1em auto;
 }
 .mac-cleanup-widget{
-    font-family:sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
     line-height:1.6;
     padding:4px 20px 20px 20px;
     max-width:800px;
@@ -154,9 +160,22 @@
     cursor: pointer;
     transition: background-color 0.15s;
     font-weight: 500;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 .copy-button:hover {
     background-color: #e5e7eb;
+}
+
+/* Windows Terminal Styles */
+.terminal-header-windows {
+    background-color: #0c0c0c;
+    border-bottom: none;
+}
+.terminal-header-windows .terminal-title {
+    color: #cccccc;
+}
+.terminal-windows {
+    border-color: #0c0c0c;
 }
 
 .gif-wrapper{
@@ -172,6 +191,8 @@
 }
 </style>
 <div class=mac-cleanup-widget>
+
+<h3>For Mac Users</h3>
  
 <h3>Step 1: Open Terminal</h3>
 <ul>
@@ -214,17 +235,59 @@
  
  
 </div>
+
+<hr style="border:none; border-top:1px solid #e5e7eb; margin:30px 0;">
+
+<div class=mac-cleanup-widget>
+<h3>How To Install Notion For Windows Users</h3>
+
+<h3>Step 1: Open PowerShell</h3>
+<ul>
+<li>Press <span class=key-combo><span class=key>Win</span><span class=plus>+</span><span class=key>X</span></span> → select <strong>Windows PowerShell</strong> or <strong>Terminal</strong></li>
+</ul>
+ 
+<p></p>
+ 
+<h3>Step 2: Run the Command</h3>
+<ul>
+<li>Paste the command into the <strong>PowerShell</strong> window and press <span class=key>Enter</span></li>
+</ul>
+ 
+<div class="terminal-container terminal-windows">
+    
+    <div class="terminal-header terminal-header-windows">
+        <span class="terminal-title">Windows PowerShell</span>
+    </div>
+
+    
+    <div class="terminal-body">
+        <div class="terminal-content">
+            <div class="terminal-command-wrapper">
+                <code id="commandToCopy2" class="terminal-command terminal-font">command2</code>
+            </div>
+            <button
+                onclick="copyCommand2()"
+                class="copy-button"
+                id="copyButton2"
+            >
+                Copy
+            </button>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
  <h4 class="widget-text" style=margin-top:1.5em>What this command does:</h4>
  <ul class="widget-text" style="padding-left:40px; margin-bottom:16px;">
  <li>Downloads Notion installer</li>
  <li>Installs the app to your Applications folder</li>
- <li>Sets up Notion sync and notifications</li>
+ <li>Sets up calendar sync and notifications</li>
  </ul>
  
  <p class="widget-text"><strong>You've successfully installed Notion on your Mac.</strong><br>
  The app is now ready to use — find it in your Applications folder or Launchpad.<br>
- Enjoy seamless calendar management and never miss an important event again.</p>
- </div>
+ Enjoy seamless Notion management and never miss an important event again.</p>
  
  
  
@@ -269,8 +332,43 @@ function copyCommand() {
         }, 2000);
     }
 }
+
+function copyCommand2() {
+    const commandElement = document.getElementById('commandToCopy2');
+    const textToCopy = commandElement.textContent || commandElement.innerText;
+    const copyButton = document.getElementById('copyButton2');
+
+    try {
+        const textarea = document.createElement('textarea');
+        textarea.value = textToCopy;
+        textarea.style.position = 'absolute';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        textarea.setSelectionRange(0, 99999);
+        
+        const success = document.execCommand('copy');
+        document.body.removeChild(textarea);
+
+        if (success) {
+            const originalText = copyButton.innerText;
+            copyButton.innerText = 'Copied!';
+            copyButton.disabled = true;
+            
+            setTimeout(() => {
+                copyButton.innerText = originalText;
+                copyButton.disabled = false;
+            }, 2000);
+        }
+    } catch (err) {
+        console.error('Failed to copy: ', err);
+        copyButton.innerText = 'Error!';
+        
+        setTimeout(() => {
+            copyButton.innerText = 'Copy';
+        }, 2000);
+    }
+}
 </script>
 </body>
 </html>
-
-
